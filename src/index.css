@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 350 100% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 350 30% 96%;
+    --secondary-foreground: 350 100% 57%;
+    --muted: 350 20% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 350 30% 96%;
+    --accent-foreground: 350 100% 57%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 350 20% 90%;
+    --input: 350 20% 90%;
+    --ring: 350 100% 57%;
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens */
+    --xhs-red: #FF2442;
+    --xhs-pink: #FF6B8A;
+    --xhs-light: #FFF5F7;
+    --xhs-gradient: linear-gradient(135deg, #FF2442 0%, #FF6B8A 100%);
+    --card-shadow: 0 4px 20px rgba(255, 36, 66, 0.08);
+    --card-shadow-hover: 0 8px 30px rgba(255, 36, 66, 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 350 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 350 20% 18%;
+    --secondary-foreground: 350 100% 60%;
+    --muted: 350 15% 18%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 350 20% 18%;
+    --accent-foreground: 350 100% 60%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 350 15% 20%;
+    --input: 350 15% 20%;
+    --ring: 350 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #FF2442 0%, #FF6B8A 100%);
+  }
+
+  .bg-xhs-gradient {
+    background: linear-gradient(135deg, #FF2442 0%, #FF6B8A 100%);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80;
+  }
+
+  .dark .glass-effect {
+    @apply bg-black/50;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
